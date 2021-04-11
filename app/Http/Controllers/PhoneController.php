@@ -9,7 +9,8 @@ use Illuminate\Http\Request;
 class PhoneController extends Controller
 {
     public function getAllPhoneBook(){
-        return Phone::orderBy('name','ASC')->get();
+         $data = Phone::orderBy('name', 'ASC')->get();
+        return response()->json($data);
     }
     /**
      * Store a newly created resource in storage.
