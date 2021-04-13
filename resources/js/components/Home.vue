@@ -28,7 +28,7 @@
             </thead>
             <tbody>
                 <tr v-if="notFound">
-                    <td colspan="2" class="w-full text-center"><span class="text-red-500">Data Not Found!</span></td>
+                    <td colspan="2" class="w-full text-center border border-pink-800 py-3 shadow-sm"><span class="text-red-500">Data Not Found!</span></td>
                 </tr>
                 <tr class="border-2 w-1/4 h-12 p-2 mb-2" v-for="(item,i) in temp" :key="item.email" >
                     <td><span class="ml-2">{{ item.name }}</span></td>

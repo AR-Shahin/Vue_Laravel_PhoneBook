@@ -14,3 +14,6 @@ Route::get('/{name}', function () {
 
 Route::resource('phone', PhoneController::class)->except(['index']);
 Route::get('get-all-phone',[PhoneController::class,'getAllPhoneBook'])->name('get-all-phone');
+
+
+Route::get('categories', [PhoneController::class, 'getAllCategoryForPagination']);

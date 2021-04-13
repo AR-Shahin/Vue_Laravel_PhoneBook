@@ -12,7 +12,13 @@ import About from '../js/components/About'
 import Modal from '../js/components/Modal'
 Vue.use(VueRouter)
 Vue.use(VueSweetalert2);
+/*----------------------------------------*/
 
+import vueResource from 'vue-resource'
+
+Vue.use(vueResource)
+
+/*----------------------------------------*/
 const routes = [
   { path: '/', component: Home,name:'home' },
   { path: '/about', component: About,name: 'about' }
