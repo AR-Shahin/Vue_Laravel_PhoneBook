@@ -9,15 +9,15 @@ use App\Http\Requests\PhoneRequest;
 
 class PhoneController extends Controller
 {
-    public function getAllPhoneBook(){
-         $data = Phone::orderBy('name', 'ASC')->get();
+    public function getAllPhoneBook()
+    {
+        $data = Phone::orderBy('name', 'ASC')->get();
         //$data = Phone::paginate(3);
         return response()->json($data);
     }
 
     public function getAllCategoryForPagination()
     {
-        return 1;
         $data = Category::paginate(5);
         return response()->json($data);
     }

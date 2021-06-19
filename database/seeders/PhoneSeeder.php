@@ -15,7 +15,7 @@ class PhoneSeeder extends Seeder
      */
     public function run()
     {
-        for ($i=0; $i < 10; $i++) {
+        for ($i = 0; $i < 100; $i++) {
             Phone::create([
                 'name' => Str::random(6),
                 'email' => Str::random(3) . '@gmail.com',

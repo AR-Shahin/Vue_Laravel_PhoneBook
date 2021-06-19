@@ -151,6 +151,7 @@ import EditModal from './EditModal'
             axios.get('get-all-phone')
             .then((response) => {
                 this.lists = this.temp =  response.data
+
             })
 
             .catch(function (error) {

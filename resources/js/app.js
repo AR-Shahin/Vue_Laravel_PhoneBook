@@ -15,7 +15,7 @@ Vue.use(VueSweetalert2);
 /*----------------------------------------*/
 
 import vueResource from 'vue-resource'
-
+Vue.component('pagination', require('laravel-vue-pagination'));
 Vue.use(vueResource)
 
 /*----------------------------------------*/

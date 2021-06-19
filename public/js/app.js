@@ -1845,8 +1845,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var laravel_vue_pagination__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! laravel-vue-pagination */ "./node_modules/laravel-vue-pagination/dist/laravel-vue-pagination.common.js");
-/* harmony import */ var laravel_vue_pagination__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(laravel_vue_pagination__WEBPACK_IMPORTED_MODULE_0__);
 //
 //
 //
@@ -1869,19 +1867,45 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  components: {
-    pagination: (laravel_vue_pagination__WEBPACK_IMPORTED_MODULE_0___default())
+  mounted: function mounted() {
+    console.log('Component mounted.');
   },
   data: function data() {
     return {
-      laravelData: {}
+      laravelData: []
     };
   },
   created: function created() {
     this.getResults();
-    console.log(this.getResults());
   },
   methods: {
     getResults: function getResults(page) {
@@ -1889,12 +1913,14 @@ __webpack_require__.r(__webpack_exports__);
 
       if (typeof page === 'undefined') {
         page = 1;
-      }
+      } // axios.get('categories').then((res) => {
+      //     console.log(res);
+      // })
 
-      this.$http.get('/categories?page=' + page).then(function (response) {
-        return response.json();
-      }).then(function (data) {
-        _this.laravelData = data;
+
+      axios.get('/categories?page=' + page).then(function (res) {
+        console.log(res.data);
+        _this.laravelData = res.data;
       });
     }
   }
@@ -2531,6 +2557,7 @@ vue__WEBPACK_IMPORTED_MODULE_6__.default.use(vue_sweetalert2__WEBPACK_IMPORTED_M
 /*----------------------------------------*/
 
 
+vue__WEBPACK_IMPORTED_MODULE_6__.default.component('pagination', __webpack_require__(/*! laravel-vue-pagination */ "./node_modules/laravel-vue-pagination/dist/laravel-vue-pagination.common.js"));
 vue__WEBPACK_IMPORTED_MODULE_6__.default.use(vue_resource__WEBPACK_IMPORTED_MODULE_8__.default);
 /*----------------------------------------*/
 
@@ -42786,35 +42813,114 @@ var render = function() {
     _c("div", { staticClass: "row justify-content-center" }, [
       _c("div", { staticClass: "col-md-8" }, [
         _c("div", { staticClass: "card" }, [
-          _c("div", { staticClass: "card-header" }, [
-            _vm._v("Laravel vue pagination - codechief.org")
+          _c("div", { staticClass: "card-header text-3xl my-3 text-center" }, [
+            _vm._v("Pagination")
           ]),
           _vm._v(" "),
           _c(
             "div",
-            { staticClass: "card-body" },
+            { staticClass: "container mx-auto" },
             [
-              _vm._v(
-                "\n                       " +
-                  _vm._s(_vm.laravelData.data) +
-                  "\n                       "
-              ),
               _c(
                 "ul",
-                _vm._l(_vm.laravelData.data, function(tag) {
-                  return _c("li", { key: tag.id }, [_vm._v(_vm._s(tag.name))])
+                _vm._l(_vm.laravelData.data, function(category) {
+                  return _c(
+                    "li",
+                    { key: category.id, staticClass: "bg-red-100 p-3 mb-2" },
+                    [_vm._v(_vm._s(category.name))]
+                  )
                 }),
                 0
               ),
               _vm._v(" "),
-              _c("pagination", {
-                attrs: { data: _vm.laravelData },
-                on: {
-                  "pagination-change-page": function($event) {
-                    return _vm.getResults()
-                  }
-                }
-              })
+              _c(
+                "pagination",
+                {
+                  attrs: { data: _vm.laravelData, limit: 5, align: _vm.center },
+                  on: { "pagination-change-page": _vm.getResults }
+                },
+                [
+                  _c("div", { staticClass: "container bg-black" }, [
+                    _c(
+                      "div",
+                      { staticClass: "flex flex-col items-center my-12" },
+                      [
+                        _c("div", { staticClass: "flex text-gray-700" }, [
+                          _c(
+                            "div",
+                            {
+                              staticClass:
+                                "h-12 w-12 mr-1 flex justify-center items-center rounded-full bg-gray-200 cursor-pointer",
+                              attrs: { slot: "prev-nav" },
+                              slot: "prev-nav"
+                            },
+                            [
+                              _c(
+                                "svg",
+                                {
+                                  staticClass:
+                                    "feather feather-chevron-left w-6 h-6",
+                                  attrs: {
+                                    xmlns: "http://www.w3.org/2000/svg",
+                                    width: "100%",
+                                    height: "100%",
+                                    fill: "none",
+                                    viewBox: "0 0 24 24",
+                                    stroke: "currentColor",
+                                    "stroke-width": "2",
+                                    "stroke-linecap": "round",
+                                    "stroke-linejoin": "round"
+                                  }
+                                },
+                                [
+                                  _c("polyline", {
+                                    attrs: { points: "15 18 9 12 15 6" }
+                                  })
+                                ]
+                              )
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "div",
+                            {
+                              staticClass:
+                                "h-12 w-12 ml-1 flex justify-center items-center rounded-full bg-gray-200 cursor-pointer",
+                              attrs: { slot: "next-nav" },
+                              slot: "next-nav"
+                            },
+                            [
+                              _c(
+                                "svg",
+                                {
+                                  staticClass:
+                                    "feather feather-chevron-right w-6 h-6",
+                                  attrs: {
+                                    xmlns: "http://www.w3.org/2000/svg",
+                                    width: "100%",
+                                    height: "100%",
+                                    fill: "none",
+                                    viewBox: "0 0 24 24",
+                                    stroke: "currentColor",
+                                    "stroke-width": "2",
+                                    "stroke-linecap": "round",
+                                    "stroke-linejoin": "round"
+                                  }
+                                },
+                                [
+                                  _c("polyline", {
+                                    attrs: { points: "9 18 15 12 9 6" }
+                                  })
+                                ]
+                              )
+                            ]
+                          )
+                        ])
+                      ]
+                    )
+                  ])
+                ]
+              )
             ],
             1
           )
